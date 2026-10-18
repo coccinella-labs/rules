@@ -1,0 +1,42 @@
+[
+  {
+    "repository": "coccinella-labs/agentware",
+    "file": "repositories/agentware.json",
+    "ruleset_id": 25238022,
+    "ruleset_name": "main-merge-queue",
+    "created_at": "2026-10-16T17:47:42.870+05:30",
+    "updated_at": "2026-10-19T00:37:36.567+05:30",
+    "exported_at": "2026-10-19T00:00:00Z",
+    "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
+  },
+  {
+    "repository": "coccinella-labs/harper",
+    "file": "repositories/harper.json",
+    "ruleset_id": 11608827,
+    "ruleset_name": "Main Branch Protection",
+    "created_at": "2026-01-07T02:27:25.909+05:30",
+    "updated_at": "2026-09-11T16:17:17.254+05:30",
+    "exported_at": "2026-10-19T00:00:00Z",
+    "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
+  },
+  {
+    "repository": "coccinella-labs/mole",
+    "file": "repositories/mole.json",
+    "ruleset_id": 25282782,
+    "ruleset_name": "main-merge-queue",
+    "created_at": "2026-10-17T05:24:13.229+05:30",
+    "updated_at": "2026-10-18T20:16:03.285+05:30",
+    "exported_at": "2026-10-19T00:00:00Z",
+    "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
+  },
+  {
+    "repository": "coccinella-labs/organictyping",
+    "file": "repositories/organictyping.json",
+    "ruleset_id": 10890767,
+    "ruleset_name": "main",
+    "created_at": "2025-12-07T18:59:26.671+05:30",
+    "updated_at": "2025-12-07T18:59:26.700+05:30",
+    "exported_at": "2026-10-19T00:00:00Z",
+    "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
+  }
+]

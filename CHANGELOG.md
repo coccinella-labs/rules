@@ -1,0 +1,35 @@
+# Changelog
+
+All notable changes to the ruleset snapshots are recorded here.
+
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/specification/v2.0.0).
+
+Entries are dated. Snapshots are refreshed when a live ruleset changes, and
+those refreshes are the changes worth recording here. A change to a live
+ruleset without a matching snapshot refresh is a defect in this repository.
+
+## [Unreleased]
+
+## [0.1.0] - 2026-10-19
+
+### Added
+
+- Initial archive of the four live rulesets in the organization: `agentware`,
+  `mole`, `harper` and `organictyping`.
+- `repositories/manifest.json` recording provenance for each snapshot: source
+  repository, upstream ruleset id, upstream created and updated timestamps,
+  export time, and the API call used.
+- A comparison index in `repositories/README.md` covering required checks, merge
+  queue settings, allowed merge methods, bypass actors, branch-level rules and
+  review requirements, so the snapshots can be reviewed without being treated as
+  interchangeable.
+
+### Notes
+
+- Snapshots are independent records, not synchronized policies. The
+  organization is on GitHub Free, which does not provide the organization-level
+  ruleset API, so no mechanism exists to apply one policy across repositories.
+- Differences between the four configurations are recorded as observed. Whether
+  each is intentional has not been established and no live ruleset was modified
+  to create this archive.
