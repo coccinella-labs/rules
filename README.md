@@ -57,6 +57,41 @@ and after stripping. Only the top-level server-assigned fields are removed.
 Each file is valid JSON with no comment header, so it can be fed to the API
 directly.
 
+### Import compatibility is tested
+
+All four payloads were imported into disposable repositories and read back.
+Every one was accepted, and every one round-tripped identically: the ruleset the
+API returned matched the snapshot field for field, and mole's and agentware's
+matched their original live exports rule for rule.
+
+```bash
+gh api repos/OWNER/REPO/rulesets --method POST --input repositories/mole.json
+gh api repos/OWNER/REPO/rulesets/RETURNED_ID
+```
+
+Ruleset names must be unique within a repository. Two snapshots named
+`main-merge-queue`, `agentware` and `mole`, cannot be imported into the same
+repository under their recorded names; one needs renaming at import time. This
+is a constraint of the API, not a defect in either file.
+
+## Keeping snapshots current
+
+A snapshot is a record of what a ruleset looked like at one moment. It does not
+keep itself current, and nothing in this repository watches the live
+configuration.
+
+When a live ruleset changes, refresh its snapshot and manifest in the same pull
+request that records the change. The cheap drift check is `updated_at` in
+`manifest.json`: if it is newer than the live `updated_at`, the snapshot is
+stale.
+
+```bash
+gh api repos/coccinella-labs/agentware/rulesets --jq '.[].updated_at'
+```
+
+A snapshot refreshed without a corresponding live change is equally wrong: it
+would claim a configuration that does not exist.
+
 ## Provenance
 
 `repositories/manifest.json` records, for each snapshot:

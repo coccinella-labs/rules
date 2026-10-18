@@ -24,6 +24,9 @@ ruleset without a matching snapshot refresh is a defect in this repository.
   queue settings, allowed merge methods, bypass actors, branch-level rules and
   review requirements, so the snapshots can be reviewed without being treated as
   interchangeable.
+- Import compatibility verified for all four payloads. Each was imported into a
+  disposable repository and read back; all four were accepted and all four
+  round-tripped identically. The disposable repositories have been deleted.
 
 ### Notes
 
