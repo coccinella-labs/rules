@@ -1,60 +1,60 @@
 {
-  "bypass_actors": [
-    {
-      "actor_id": null,
-      "actor_type": "OrganizationAdmin",
-      "bypass_mode": "always"
-    }
-  ],
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": [
-        "~DEFAULT_BRANCH"
-      ]
-    }
-  },
-  "enforcement": "active",
-  "name": "Main Branch Protection",
-  "rules": [
-    {
-      "type": "deletion"
+    "bypass_actors": [
+        {
+            "actor_id": null,
+            "actor_type": "OrganizationAdmin",
+            "bypass_mode": "always"
+        }
+    ],
+    "conditions": {
+        "ref_name": {
+            "exclude": [],
+            "include": [
+                "~DEFAULT_BRANCH"
+            ]
+        }
     },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "parameters": {
-        "allowed_merge_methods": [
-          "squash",
-          "rebase"
-        ],
-        "dismiss_stale_reviews_on_push": true,
-        "dismissal_restriction": {
-          "allowed_actors": [],
-          "enabled": false
+    "enforcement": "active",
+    "name": "main-protection",
+    "rules": [
+        {
+            "type": "deletion"
         },
-        "require_code_owner_review": false,
-        "require_extra_approval_for_unattributed_changes": true,
-        "require_last_push_approval": false,
-        "required_approving_review_count": 1,
-        "required_review_thread_resolution": false,
-        "required_reviewers": []
-      },
-      "type": "pull_request"
-    },
-    {
-      "parameters": {
-        "do_not_enforce_on_create": false,
-        "required_status_checks": [
-          {
-            "context": "CI (ubuntu-latest)"
-          }
-        ],
-        "strict_required_status_checks_policy": true
-      },
-      "type": "required_status_checks"
-    }
-  ],
-  "target": "branch"
+        {
+            "type": "non_fast_forward"
+        },
+        {
+            "type": "pull_request",
+            "parameters": {
+                "required_approving_review_count": 1,
+                "dismiss_stale_reviews_on_push": true,
+                "required_reviewers": [],
+                "require_code_owner_review": false,
+                "dismissal_restriction": {
+                    "enabled": false,
+                    "allowed_actors": []
+                },
+                "require_last_push_approval": false,
+                "required_review_thread_resolution": false,
+                "require_extra_approval_for_unattributed_changes": true,
+                "allowed_merge_methods": [
+                    "squash",
+                    "rebase"
+                ]
+            }
+        },
+        {
+            "type": "required_status_checks",
+            "parameters": {
+                "strict_required_status_checks_policy": true,
+                "do_not_enforce_on_create": false,
+                "required_status_checks": [
+                    {
+                        "context": "CI (ubuntu-latest)"
+                    }
+                ]
+            }
+        }
+    ],
+    "target": "branch"
 }

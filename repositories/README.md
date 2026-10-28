@@ -9,12 +9,13 @@ provenance and the parent README for how these files are produced.
 | --- | --- | --- | --- | --- | --- | --- |
 | [agentware](../README.md) | `main-merge-queue` | 3 | MERGE, ALLGREEN, 5m | required | 0 | Maintain, always |
 | [mole](../README.md) | `main-merge-queue` | 7 | SQUASH, ALLGREEN, 5m | required | 0 | none |
-| [harper](../README.md) | `Main Branch Protection` | 4 | none | not required | 1 | OrganizationAdmin, always |
+| [harper](../README.md) | `main-protection` | 4 | none | not required | 1 | OrganizationAdmin, always |
+| [harper-merge-queue](../README.md) | `main-merge-queue` | 2 | SQUASH, ALLGREEN, 5m | n/a | n/a | none |
 | [organictyping](../README.md) | `main` | 3 | none | not required | 1 | none |
 
 ## Comparison
 
-The four configurations differ substantially. They are not variants of one
+The configurations differ substantially. They are not variants of one
 policy and should not be read as interchangeable.
 
 ### Required status checks
@@ -35,11 +36,12 @@ Four different check-naming conventions across four repositories.
 | agentware | `MERGE` | `ALLGREEN` | 5 min |
 | mole | `SQUASH` | `ALLGREEN` | 5 min |
 | harper | none | | |
+| harper (merge queue) | `SQUASH` | `ALLGREEN` | 5 min |
 | organictyping | none | | |
 
-The two repositories with a queue also disagree on merge method, so their
-histories will look different: agentware keeps individual merge commits, mole
-produces one squashed commit per pull request.
+The three repositories with a queue also disagree on merge method, so
+their histories will look different: agentware keeps individual merge
+commits, mole produces one squashed commit per pull request.
 
 ### Allowed merge methods
 
@@ -50,8 +52,8 @@ produces one squashed commit per pull request.
 | harper | `squash`, `rebase` |
 | organictyping | `merge`, `squash`, `rebase` |
 
-harper disallows merge commits outright. Its `merge_method` in any future queue
-configuration would be constrained accordingly.
+harper disallows merge commits outright. Its merge queue uses `SQUASH`,
+consistent with its `squash` and `rebase` allowed merge methods.
 
 ### Bypass actors
 
@@ -84,6 +86,7 @@ force-push rules.
 | agentware | required | 0 |
 | mole | required | 0 |
 | harper | not required | 1 |
+| harper (merge queue) | n/a (no PR rule) | n/a (no PR rule) |
 | organictyping | not required | 1 |
 
 ## Observed differences, not a judgement
@@ -101,4 +104,6 @@ The differences most worth confirming with a maintainer:
 - **`agentware` is the only repository where a bot may enqueue its own pull
   request** without a human approval, because its approval count is 0.
 
-None of these were changed in creating this archive.
+These were recorded as observed. The harper `main-merge-queue` ruleset
+snapshot was added to track the merge queue configuration enabled after
+the original archive was created.
