@@ -11,6 +11,13 @@ ruleset without a matching snapshot refresh is a defect in this repository.
 
 ## [Unreleased]
 
+### Changed
+
+- Refreshed `repositories/harper.json` and `repositories/harper-main-merge-queue.json` to match the live API state as of 2026-10-29:
+  - `required_status_checks` expanded from one context to three (added `CI (macos-latest)` and `CI (windows-latest)`) in both rulesets.
+  - `check_response_timeout_minutes` increased from 60 to 120 in the merge-queue ruleset.
+  - Updated `manifest.json` provenance (`updated_at` and `exported_at`) for both harper entries.
+
 ## [0.1.0] - 2026-10-19
 
 ### Added
