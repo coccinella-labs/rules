@@ -3,13 +3,21 @@
 All notable changes to the ruleset snapshots are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/specification/v2.0.0).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Entries are dated. Snapshots are refreshed when a live ruleset changes, and
 those refreshes are the changes worth recording here. A change to a live
 ruleset without a matching snapshot refresh is a defect in this repository.
 
 ## [Unreleased]
+
+### Added
+
+- Added `repositories/ellis.json` for `coccinella-labs/ellis`, snapshot of ruleset `main-protection` (id 26288517) exported 2026-10-31:
+  - Required status checks: `Code Quality: Push on main`, `CodeQL`, `Docker`, `E2E Tests`, `Release`, `Validate Workflows`, `CLI`.
+  - 1 required approving review, review thread resolution required, signatures required.
+  - `Maintain` role bypass enabled (`always`).
+  - Updated `manifest.json` provenance for the new entry.
 
 ### Changed
 
