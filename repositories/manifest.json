@@ -10,6 +10,16 @@
     "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
   },
   {
+    "repository": "coccinella-labs/ellis",
+    "file": "repositories/ellis.json",
+    "ruleset_id": 26288517,
+    "ruleset_name": "main-protection",
+    "created_at": "2026-10-31T21:21:24.832+05:30",
+    "updated_at": "2026-10-31T21:21:24.884+05:30",
+    "exported_at": "2026-10-31T21:50:00Z",
+    "export_method": "GET /repos/coccinella-labs/{repo}/rulesets/{id}"
+  },
+  {
     "repository": "coccinella-labs/harper",
     "file": "repositories/harper.json",
     "ruleset_id": 26004025,
