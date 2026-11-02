@@ -9,6 +9,7 @@ provenance and the parent README for how these files are produced.
 | --- | --- | --- | --- | --- | --- | --- |
 | [agentware](../README.md) | `main-merge-queue` | 3 | MERGE, ALLGREEN, 5m | required | 0 | Maintain, always |
 | [ellis](../README.md) | `main-protection` | 3 | none | required | 1 | Maintain, always |
+| [ellis-merge-queue](../README.md) | `main-merge-queue` | 2 | SQUASH, ALLGREEN, 5m | n/a | n/a | OrganizationAdmin, always |
 | [harper](../README.md) | `main-protection` | 4 | none | not required | 1 | OrganizationAdmin, always |
 | [harper-merge-queue](../README.md) | `main-merge-queue` | 2 | SQUASH, ALLGREEN, 5m | n/a | n/a | none |
 | [mole](../README.md) | `main-merge-queue` | 7 | SQUASH, ALLGREEN, 5m | required | 0 | none |
@@ -26,24 +27,27 @@ policy and should not be read as interchangeable.
 | mole | `build`, `build-and-push`, `pre-commit`, `test (3.12)`, `test (3.13)`, `test (3.14)`, `e2e` |
 | agentware | `build (ubuntu, debug)`, `build (windows, release)`, `lint` |
 | ellis | `Code Quality: Push on main`, `CodeQL`, `Docker`, `E2E Tests`, `Release`, `Validate Workflows`, `CLI` |
+| ellis (merge queue) | `Ellis`, `Validate Workflows`, `Docker`, `E2E Tests`, `CLI` |
 | harper | `CI (ubuntu-latest)` |
 | organictyping | none |
 
-Five different check-naming conventions across five repositories.
+Six different check-naming conventions across six repositories.
 
 ### Merge queue
 
 | Repository | Method | Grouping | Wait |
 | --- | --- | --- | --- |
 | agentware | `MERGE` | `ALLGREEN` | 5 min |
+| ellis (merge queue) | `SQUASH` | `ALLGREEN` | 5 min |
 | mole | `SQUASH` | `ALLGREEN` | 5 min |
 | harper | none | | |
 | harper (merge queue) | `SQUASH` | `ALLGREEN` | 5 min |
 | organictyping | none | | |
 
-The three repositories with a queue also disagree on merge method, so
-their histories will look different: agentware keeps individual merge
-commits, mole produces one squashed commit per pull request.
+Four repositories have a queue. ellis and mole use `SQUASH`, agentware
+uses `MERGE`, and harper (merge queue) uses `SQUASH`. Their histories will
+look different: agentware keeps individual merge commits, while mole and
+ellis produce one squashed commit per pull request.
 
 ### Allowed merge methods
 

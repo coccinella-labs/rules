@@ -21,10 +21,28 @@ ruleset without a matching snapshot refresh is a defect in this repository.
 
 ### Changed
 
-- Refreshed `repositories/harper.json` and `repositories/harper-main-merge-queue.json` to match the live API state as of 2026-10-29:
-  - `required_status_checks` expanded from one context to three (added `CI (macos-latest)` and `CI (windows-latest)`) in both rulesets.
-  - `check_response_timeout_minutes` increased from 60 to 120 in the merge-queue ruleset.
-  - Updated `manifest.json` provenance (`updated_at` and `exported_at`) for both harper entries.
+- Refreshed `repositories/ellis.json` to match the live API state as of 2026-11-02:
+  - `updated_at` advanced from 2026-10-31 to 2026-11-02 (the ruleset was toggled
+    through branch protection during a force-push cycle and restored to its
+    original configuration).
+  - Verified the snapshot is still byte-identical to the live ruleset: all
+    rules, rule parameters, conditions, enforcement, and bypass actors match.
+  - Updated `manifest.json` provenance (`updated_at` and `exported_at`) for the
+    entry.
+
+### Added
+
+- Added `repositories/ellis-main-merge-queue.json` for `coccinella-labs/ellis`,
+  snapshot of ruleset `main-merge-queue` (id 26353638) exported 2026-11-02. This
+  ruleset was missing from the archive entirely:
+  - Required status checks: `Ellis`, `Validate Workflows`, `Docker`, `E2E Tests`,
+    `CLI`.
+  - Merge queue: `SQUASH`, `ALLGREEN`, 5 min wait, 5 max entries to build.
+  - `OrganizationAdmin` bypass enabled (`always`) in addition to the `Maintain`
+    role bypass that `main-protection` also grants.
+  - Updated `manifest.json` provenance for the new entry.
+  - Updated the comparison index in `repositories/README.md` to cover both
+    ellis rulesets.
 
 ## [0.1.0] - 2026-10-19
 
